@@ -90,16 +90,16 @@ void main(){
     vec2 st=gl_FragCoord.xy/u_resolution;
     
     // float y=doubleOddPolynomialSeat(st.x,.5,.5,1);
-    float y=doubleEllipticSeat(st.x,.1,.5);
+    // float y=doubleEllipticSeat(st.x,.1,cos(u_time));
     // float y=quadraticBezier(st.x,.6,0.);
     // float y=expImpulse(st.x,5.);
-    // float y=gain(st.x,3.);
-    // float y=doubleCircleSigmoid(st.x,0.3);
+    float y=gain(st.x,tan(u_time));
+    // float y=doubleCircleSigmoid(st.x,sin(u_time));
     
     vec3 color=vec3(y);
     
     float pct=plot(st,y);
-    color=(1.-pct)*color+pct*vec3(0.,1.,0.);
+    color=(1.-pct)*color+pct*vec3(sin(u_time), cos(u_time),tan(u_time));
     
     gl_FragColor=vec4(color,1.);
 }
