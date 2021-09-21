@@ -14,8 +14,8 @@ void main() {
     vec2 st = gl_FragCoord.xy/u_resolution.xy * 2.0 - 1.;
     st *= 10.0;
     float radius = smoothstep(-0.5, 0.5, sin(u_time))+1.0;
-    vec2 rep = vec2(2.0,5.0);
-    vec2 p = mod(st, rep) - 0.5*rep;
+    vec2 seperation = vec2(2.0,5.0);
+    vec2 p = mod(st, seperation) - 0.5*seperation;
     float c = smoothstep(0.1, 0.0, abs(length(p)-radius));
     gl_FragColor = vec4(hsv(radius, 1.0, c), 1.0);
 }
